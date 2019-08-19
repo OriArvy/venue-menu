@@ -1,0 +1,35 @@
+.footer {
+  background: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  padding: 0px 50px;
+  color: rgba(0,0,0,0.3);
+}
+.footer-links {
+  display: flex;
+  align-items: center;
+}
+.footer-links a {
+  color: black;
+  opacity: 0.5;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 0px 18px;
+}
+.footer-links a:hover {
+  opacity: 1;
+}
+
+.footer-copyright {
+  color: black;
+  opacity: 0.65;
+  font-weight: lighter;
+}
+
+.footer-copyright i{
+  color: black;
+  opacity: 0.65;
+  font-weight: lighter;
+}
