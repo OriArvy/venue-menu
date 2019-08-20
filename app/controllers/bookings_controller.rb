@@ -1,7 +1,6 @@
 class BookingsController < ApplicationController
-  before_action :find_booking, only: [:show, :edit, :update, :destroy]
-
   def index
+    @user = current_user
     @bookings = Booking.all
   end
 
@@ -10,18 +9,29 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    @user = current_user
+    @venue = Venue.find(params[:venue_id])
   end
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.save
-    redirect_to bookings_path
+    @user = current_user
+    @booking.user = @user
+    @venue = Venue.find(params[:venue_id])
+    @booking.venue = @venue
+    if @booking.save
+      redirect_to bookings_path
+    else
+      render :new
+    end
   end
 
   def edit
+    @booking = Booking.find(params[:id])
   end
 
   def update
+    @booking = Booking.find(params[:id])
     @booking.update(booking_params)
     redirect_to booking_path(booking)
   end
@@ -35,9 +45,5 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:check_in, :check_out, :duration, :price, :payment_status)
-  end
-
-  def find_booking
-    @booking = Booking.find(params[:id])
   end
 end
