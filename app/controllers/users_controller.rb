@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:restaurant).permit(:name, :email, :address, :description)
+    params.require(:user).permit(:name, :email, :address, :description)
   end
 
   def find_user
