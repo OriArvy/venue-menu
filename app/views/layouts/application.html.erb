@@ -10,9 +10,7 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%= render 'shared/flashes' %>
     <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
       <a class="navbar-brand" href="#">
         <i class="fas fa-igloo" id="logo"></i>
