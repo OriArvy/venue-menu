@@ -1,7 +1,61 @@
-<div class="venue-img-container">
- <img src=<%= @venue.photo %> alt="">
- <div id="venue-heading">
-  <h2><%= @venue.name %></h2></div>
+<div class="container">
+  <div class="row">
+   <img class="col-lg-12 pt-4" src=<%= @venue.photo %> alt="">
+  </div>
+  <div class="row">
+  </div>
+  <div class="row">
+    <div class="col-lg-6 ">
+      <p class="text-center"></p>
+    </div>
+  </div>
 
-  <p><%= @venue.description %></p>
+
+  <div class="card text-center" >
+    <div class="card-body text-center">
+      <h1 class="card-title"><%= @venue.name %></h1>
+      <p class="card-text"><%= @venue.description %></p>
+      <div class="row">
+        <h3 class="text-center">Price from: £<%= @venue.price %></h3>
+      </div>
+      <div class="row">
+        <h3 class="text-center">Rating: <% if @venue.rating.between?(5, 5)  %>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+
+          <% elsif @venue.rating.between?(4.5, 4.99)  %>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i>
+
+          <% elsif @venue.rating.between?(4, 4.5)  %>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+
+          <% elsif @venue.rating.between?(3.5, 3.99)  %>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i>
+
+          <% elsif @venue.rating.between?(3, 3.5) %>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+
+          <% elsif @venue.rating.between?(2.5, 2.99)  %>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i>
+
+          <% elsif @venue.rating.between?(2, 2.5) %>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+
+          <% elsif @venue.rating.between?(1.5, 1.99)  %>
+          <i class="fas fa-star"></i><i class="fas fa-star-half"></i>
+
+          <% elsif @venue.rating.between?(1, 1.5)  %>
+          <i class="fas fa-star"></i>
+          <% end  %>
+          (<%= @venue.rating %>)
+        </h3>
+      </div>
+
+<!-- These need to be user_signed_in ?-->
+      <a href="#" class="btn btn-primary">Check Availability</a>
+      <% if current_user == @venue.user %>
+        <%= link_to "Edit Venue",edit_venue_path(@venue), class: "btn btn-warning" %>
+      <% end %>
+
+    </div>
+  </div>
 </div>
