@@ -26,7 +26,7 @@ class VenuesController < ApplicationController
     redirect_to venue_path(venue)
   end
 
-  def destoy
+  def destroy
     @venue.delete
     redirect_to venues_path
   end
