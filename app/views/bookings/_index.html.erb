@@ -1,0 +1,4 @@
+<% current_user.bookings.each do |booking| %>
+<li><%= booking.check_in %>
+  <%= booking.check_out %></li>
+<% end %>

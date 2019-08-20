@@ -2,18 +2,18 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = user.all
+    @users = User.all
   end
 
   def show
   end
 
   def new
-    @user = user.new
+    @user = User.new
   end
 
   def create
-    @user = user.new(user_params)
+    @user = User.new(user_params)
     @user.save
     redirect_to users_path
   end
@@ -38,6 +38,6 @@ class UsersController < ApplicationController
   end
 
   def find_user
-    @user = user.find(params[:id])
+    @user = User.find(params[:id])
   end
 end
