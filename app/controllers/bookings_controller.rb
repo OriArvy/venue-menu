@@ -26,7 +26,7 @@ class BookingsController < ApplicationController
     redirect_to booking_path(booking)
   end
 
-  def destoy
+  def destroy
     @booking.delete
     redirect_to bookings_path
   end
