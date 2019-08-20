@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     redirect_to user_path(user)
   end
 
-  def destoy
+  def destroy
     @user.delete
     redirect_to users_path
   end
