@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.6.3'
 
+gem 'carrierwave', '~> 1.2'
+gem 'cloudinary', '~> 1.9.1'
 gem 'devise'
 gem 'bootsnap', require: false
 gem 'jbuilder', '~> 2.0'

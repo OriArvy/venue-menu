@@ -1,5 +1,6 @@
 <div class="venue-img-container">
  <img src=<%= @venue.photo %> alt="">
+  <%= cl_image_tag @venue.photo, width: 400, height: 300, crop: :fill %>
  <div id="venue-heading">
   <h2><%= @venue.name %></h2></div>
 
