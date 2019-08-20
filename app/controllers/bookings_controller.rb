@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
     @venue = Venue.find(params[:venue_id])
     @booking.venue = @venue
     if @booking.save
-      redirect_to bookings_path
+      redirect_to profile_path
     else
       render :new
     end
