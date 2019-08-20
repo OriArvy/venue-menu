@@ -10,16 +10,13 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
+
     <!-- Renders the pop up notifications for devise -->
     <%= render 'shared/flashes' %>
     <!-- Renders nav-bar -->
     <%= render 'shared/nav-bar' %>
-
     <%= yield %>
-
     <%= render 'shared/footer' %>
-
-
 
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
