@@ -1,7 +1,7 @@
 class VenuesController < ApplicationController
 
   def index
-    @venues = Venue.all
+    @venues = policy_scope(Venue).all
   end
 
   def show
@@ -24,7 +24,7 @@ class VenuesController < ApplicationController
     @venue.user = @user
     if @venue.save
       authorize @venue
-      redirect_to venues_path
+      redirect_to root_path
     else
       render :new
     end
