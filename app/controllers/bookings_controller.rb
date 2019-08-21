@@ -24,7 +24,8 @@ class BookingsController < ApplicationController
       authorize @booking
       redirect_to profile_path
     else
-      render :new
+      authorize @venue
+      redirect_to venue_path(@venue)
     end
   end
 
