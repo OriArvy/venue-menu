@@ -54,6 +54,31 @@
       </div>
 
 <!-- These need to be user_signed_in ?-->
+<div class="booking-form" >
+  <div class="form-inputs">
+<%= simple_form_for [@venue, @booking] do |f| %>
+  <%= f.input :check_in %>
+  <%= f.input :check_out %>
+  <%= f.submit %>
+<% end %>
+
+</div>
+
+
+    <%= f.input :email, required: false, autofocus: true, placeholder: "bob@gmail.com" %>
+    <%= f.input :password, required: false, placeholder: "••••••" %>
+    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, "Log in", class: "btn btn-primary" %>
+  </div>
+  <%= render "devise/shared/links" %>
+<% end %>
+
+
+
+
+
 
       <%= link_to "Book now",new_venue_booking_path(@venue), class: "btn btn-primary" %>
       <% if current_user == @venue.user %>

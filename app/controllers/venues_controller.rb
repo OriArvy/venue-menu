@@ -6,6 +6,9 @@ class VenuesController < ApplicationController
 
   def show
     @venue = Venue.find(params[:id])
+    @booking = Booking.new
+    @user = current_user
+    authorize @booking
     authorize @venue
   end
 
