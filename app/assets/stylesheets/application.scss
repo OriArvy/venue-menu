@@ -28,4 +28,38 @@ li {
   list-style-type: none;
 }
 
+body {
+ background: white;
+}
+
+.container {
+  background: white;
+}
+
+.btn {
+  background-color: rgba(13,28,42,0.9);
+}
+
+.card-img-top.pt-3.rounded {
+  height: 250px;
+  object-fit: cover;
+}
+
+.profile_items {
+  background-color: rgba(13,28,42,0.85);
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align: center;
+
+  h1 {
+    font-size: 34px;
+  }
+}
+
+
+
 

@@ -11,8 +11,15 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
+         <li class="nav-item active">
+           <%  if user_signed_in? %>
+           <%= link_to "Add Venue",new_venue_path, class: "nav-link", id: "nav-link-white"  %>
+           <% end %>
+        </li>
         <li class="nav-item active">
-           <%= link_to "Add Venue",new_venue_path, class: "nav-link", id: "nav-link-white" %>
+           <%  if user_signed_in? %>
+           <%= link_to "My Profile",profile_path, class: "nav-link", id: "nav-link-white"  %>
+           <% end %>
         </li>
         <li class="nav-item">
           <% if user_signed_in? == false %>
