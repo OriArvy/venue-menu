@@ -52,6 +52,50 @@ venue_3 = Venue.create!(
   venue_3.remote_photo_url = url3
   venue_3.save!
 
+venue_4 = Venue.create!(
+  name: 'Berlin Club',
+  price: 50.23,
+  rating: 4.9,
+  address: "Am Wriezener Bahnhof, 10243 Berlin, Germany",
+  description: "The club is located in a former power plant (originally rented from the energy company Vattenfall[9]) in Friedrichshain, near Berlin Ostbahnhof railway station. In 2011 the building was bought from Vattenfall and is now owned outright. The building is remarkable for its enormous dimensions, and accommodates an 18 m-high (59 ft) dance floor and space for 1,500 guests. The interior's minimalist design is dominated by steel and concrete. The club contains a cavernous main room, as well as a smaller upstairs space called Panorama Bar. It is decorated with large-scale Wolfgang Tillmans photographs and features tall windows with a view of East Berlin. In 2007 only half of the building was in use. The club sports a Funktion-One sound system on its main dancefloor which, at the time it was installed in 2004, was one of the company's largest club installs. At its launch, the sound system comprised four Funktion-One Dance Stacks (consisting of a DS210, a DS215 and three F218), one Double Infrahorn (consisting of two Infrabass, one Doublehorn Extension), and two Resolution 2 for monitoring.",
+  user: user_1)
+  url4 = "https://images.unsplash.com/photo-1554138927-3058b7030d32?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1334&q=80"
+  venue_4.remote_photo_url = url4
+  venue_4.save!
+
+venue_5 = Venue.create!(
+  name: 'Castle Of Your Dreams',
+  price: 5000.23,
+  rating: 2.3,
+  address: "Neuschwansteinstraße 20, 87645 Schwangau, Germany",
+  description: "The palace can be regarded as typical for nineteenth-century architecture. The shapes of Romanesque (simple geometric figures such as cuboids and semicircular arches), Gothic (upward-pointing lines, slim towers, delicate embellishments) and Byzantine architecture and art (the Throne Hall décor) were mingled in an eclectic fashion and supplemented with 19th-century technical achievements. The Patrona Bavariae and Saint George on the court face of the Palas (main building) are depicted in the local Lüftlmalerei style, a fresco technique typical for Allgäu farmers' houses, while the unimplemented drafts for the Knights' House gallery foreshadow elements of Art Nouveau.[22] Characteristic of Neuschwanstein's design are theatre themes: Christian Jank drew on coulisse drafts from his time as a scenic painter. The basic style was originally planned to be neo-Gothic but the palace was primarily built in Romanesque style in the end. The operatic themes moved gradually from Tannhäuser and Lohengrin to Parsifal. ",
+  user: user_1)
+  url5 = "https://images.unsplash.com/photo-1495316364083-b5916626072e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+  venue_5.remote_photo_url = url5
+  venue_5.save!
+
+venue_6 = Venue.create!(
+  name: 'Fyre Island',
+  price: 10.23,
+  rating: 1.3,
+  address: "Isle of Dogs, London, UK",
+  description: "The Isle of Dogs is a large peninsula bounded on three sides by a large meander in the River Thames in East London, England, which includes the Poplar, Millwall, Limehouse and Canary Wharf districts.",
+  user: user_1)
+  url6 = "https://images.unsplash.com/photo-1505881502353-a1986add3762?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1562&q=80"
+  venue_6.remote_photo_url = url6
+  venue_6.save!
+
+venue_7 = Venue.create!(
+  name: 'Matts Super Yacht',
+  price: 128.23,
+  rating: 4.3,
+  address: "Temple Pier, Victoria Embankment, London WC2R 2PN",
+  description: "Come and have an unforgettable evening at The Yacht London, a unique restaurant and event space located on the river in the heart of London.",
+  user: user_1)
+  url7 = "https://images.unsplash.com/photo-1515471216966-c8521f081224?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1334&q=80"
+  venue_7.remote_photo_url = url7
+  venue_7.save!
+
 Booking.create!(
  check_in: 20190501,
  check_out: 20190503,
