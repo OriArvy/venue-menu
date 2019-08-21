@@ -19,11 +19,28 @@ class VenueReviewsController < ApplicationController
     end
   end
 
-  def destroy
-    @user = current_user
+  def edit
     @review = VenueReview.find(params[:id])
-    @review.delete
     authorize @review
+  end
+
+  def update
+    @review = VenueReview.find(params[:id])
+    @user = current_user
+    authorize @review
+    if @review.update(review_params)
+      redirect_to profile_path
+    else
+      render :new
+    end
+  end
+
+  def destroy
+    @review = VenueReview.find(params[:id])
+    @user = current_user
+    authorize @review
+    @review.delete
+    redirect_to profile_path
   end
 
   private
