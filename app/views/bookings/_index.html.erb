@@ -16,6 +16,15 @@
         </div>
         <p class="card-title"><strong>Total Cost:</strong> £<%= booking.venue.price * ((booking.check_out - booking.check_in).to_i)  %></p>
           <% end %>
+        <div class="card-title"><strong>Payment completed?:</strong> <% if booking.payment_completed? %>
+                Yes
+                <% else %>
+                No
+                <% end %>
+        </div>
+
+
+
 
           <a href="<%= venue_path(booking.venue_id) %>" id ="btn-color-override"class="btn btn-primary btn-block">Venue Details</a>
         </div>

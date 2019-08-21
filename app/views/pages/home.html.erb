@@ -11,8 +11,15 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
+         <li class="nav-item active">
+           <%  if user_signed_in? %>
+           <%= link_to "Add Venue",new_venue_path, class: "nav-link", id: "nav-link-white"  %>
+           <% end %>
+        </li>
         <li class="nav-item active">
-           <%= link_to "Add Venue",new_venue_path, class: "nav-link", id: "nav-link-white" %>
+           <%  if user_signed_in? %>
+           <%= link_to "My Profile",profile_path, class: "nav-link", id: "nav-link-white"  %>
+           <% end %>
         </li>
         <li class="nav-item">
           <% if user_signed_in? == false %>
@@ -32,14 +39,14 @@
   </div>
 
   <div class="welcometext">
-    <h1> Find unique venues </h1>
-    <h1> for your event ... </h1>
-     <div class="navbar navbar-expand-sm navbar-light navbar-lewagon" id="search_form_home">
+    <h1 class="ml-2"> Find unique venues for your event... </h1>
+    <h1 class="ml-2"> </h1>
+     <div class="navbar navbar-expand-sm navbar-light navbar-lewagon pl-0 ml-0 mt-2" id="search_form_home">
       <li class="text-truncate w-100 mr-3 ml-2">
           <form class="input-group">
               <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Explore..." autocomplete="off">
               <div class="input-group-btn">
-                  <button name="button" type="submit" class="btn btn-outline-dark ml-2">Search</button>
+                  <button name="button" type="submit" class="btn btn-outline-light ml-2">Go</button>
               </div>
           </form>
       </li>
@@ -48,9 +55,12 @@
   </div>
 </div>
 
-<div class="cards">
+<div class="card-container">
+  <div class="cards">
   <% @venues.each do |venue| %>
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path venue.photo  unless venue.photo.blank? %>')"><%= link_to venue.name, venue_path(venue)%></div>
   <% end %>
+  </div>
 </div>
+
 
