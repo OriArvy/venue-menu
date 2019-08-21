@@ -1,1 +1,14 @@
-<%= render "bookings/index" %>
+<div class="container">
+  <h1 class="pt-5 pl-5 ml-4 pb-2">Your hired venues</h1>
+    <% if current_user.bookings.count == 0%>
+      <p class= "pl-5 ml-4">No bookings yet</p>
+    <% end %>
+  <div class="col-lg-12">
+    <%= render "bookings/index" %>
+  </div>
+  <h1 class="pt-5 pl-5 ml-4 pb-2">Venues you own</h1>
+    <% if current_user.venues.count == 0 %>
+      <p class= "pl-5 ml-4">You haven't listed any venues yet</p>
+    <% end %>
+</div>
+
