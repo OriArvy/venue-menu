@@ -18,9 +18,14 @@
 }
 
 .welcometext {
-  top: 33%;
-  left: 5%;
+  top: 380px;
+  left: 480px;
   position: absolute;
+  background-color: rgba(0,0,0,0.0);
+}
+
+#search_form_home {
+  background-color: rgba(0,0,0,0.0);
 }
 
 .banner p {
@@ -28,4 +33,14 @@
   color: white;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+#logo-text-homepage {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 50px;
+  vertical-align: bottom;
+  color: white;
+  position: absolute;
+  top: 60px;
+  left: 480px;
 }
