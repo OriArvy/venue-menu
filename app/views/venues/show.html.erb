@@ -62,6 +62,7 @@
 
           <% if current_user == @venue.user %>
             <%= link_to "Edit Venue",edit_venue_path(@venue), class: "btn btn-warning" %>
+            <%= link_to 'Delete venue', venue_path(@venue), method: :delete, class: "btn btn-warning"  %>
           <% end %>
 
         </div>
