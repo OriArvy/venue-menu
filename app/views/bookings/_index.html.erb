@@ -1,7 +1,25 @@
-<div class="cards">
-<% current_user.bookings.each do |booking| %>
-<li><%= booking.check_in %>
- <%= booking.check_out %></li>
-   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= booking.venue.photo %>')"></div>
- <% end %>
+<div class="container">
+  <div class="row justify-content-around">
+    <% current_user.bookings.each do |booking| %>
+     <div class="card col-lg-5 mr-3 ml-3 mb-5 mt-3">
+      <img class="card-img-top pt-3 rounded" src="<%= booking.venue.photo %>" alt="Card image cap">
+      <div class="card-body">
+        <h3 class="card-title"><%= booking.venue.name %></h3>
+        <div class="card-title"><strong>Arriving:</strong> <%= booking.check_in %></div>
+        <div class="card-title"><strong>Hired for:</strong>
+          <% if (booking.check_out - booking.check_in).to_i == 0 %>
+            1 day
+        </div>
+        <p class="card-title"><strong>Total Cost:</strong> £<%= booking.venue.price%></p>
+          <% else %>
+            <%= (booking.check_out - booking.check_in).to_i %> days
+        </div>
+        <p class="card-title"><strong>Total Cost:</strong> £<%= booking.venue.price * ((booking.check_out - booking.check_in).to_i)  %></p>
+          <% end %>
+
+          <a href="<%= venue_path(booking.venue_id) %>" id ="btn-color-override"class="btn btn-primary btn-block">Venue Details</a>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
