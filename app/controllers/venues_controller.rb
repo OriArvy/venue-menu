@@ -24,7 +24,7 @@ class VenuesController < ApplicationController
     @venue.user = @user
     if @venue.save
       authorize @venue
-      redirect_to venues_path
+      redirect_to root_path
     else
       render :new
     end
