@@ -54,8 +54,18 @@
       </div>
 
 <!-- These need to be user_signed_in ?-->
+      <div class="booking-form" >
+        <%= simple_form_for [@venue, @booking] do |f| %>
+        <div class="form-inputs">
+          <%= f.input :check_in %>
+          <%= f.input :check_out %>
+        </div>
+        <div class="form-actions">
+        <%= f.button :submit, "Book now", class: "btn btn-primary" %>
+        </div>
+        <% end %>
+      </div>
 
-      <%= link_to "Book now",new_venue_booking_path(@venue), class: "btn btn-primary" %>
       <% if current_user == @venue.user %>
         <%= link_to "Edit Venue",edit_venue_path(@venue), class: "btn btn-warning" %>
       <% end %>
