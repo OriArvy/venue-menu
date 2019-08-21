@@ -21,30 +21,36 @@ user_3 = User.create!(
 
 venue_1 = Venue.create!(
   name: 'Luxurious Safari Tent',
-  photo: "https://images.unsplash.com/photo-1545153996-9419dd2acf66?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80",
   price: 97,
   rating: 4.2,
   address: "Liddon Rd, Bromley BR1 2SR",
   description: "Appreciate the thrill of the great outdoors from the comfort of one of our spacious tents. They are equipped with beds, outside furniture, electric lighting, a fridge and a handy kitchen, so you can enjoy your “back to nature” experience in style. Safari: Our modern tent, positioned on wooden decking, offering even more comfort. This elevated camping experience will appeal to both new and seasoned campers.",
   user: user_1)
+  url = "https://images.unsplash.com/photo-1545153996-9419dd2acf66?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80"
+  venue_1.remote_photo_url = url
+  venue_1.save!
 
 venue_2 = Venue.create!(
   name: 'Iconic Igloo',
-  photo: "https://images.unsplash.com/photo-1548278651-843b1d7431a9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)",
   price: 237.2,
   rating: 4.2,
   address: "Igloo Disco, Golden Soul Leisure LTD, 71 Kirkstall Road, Leeds, LS3 1LH",
   description: "Our inflatable igloos come in various sizes & styles, suitable for any outdoor party, wedding, corporate event, exhibition or festival. Our waterproof inflatable structures provide a jaw-dropping temporary shelter for your function, whatever the weather. The igloos can be installed quickly and easily by a small team, providing a striking, economical alternative to traditional marquee hire.",
   user: user_2)
+  url2 = "https://images.unsplash.com/photo-1548278651-843b1d7431a9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)"
+  venue_2.remote_photo_url = url2
+  venue_2.save!
 
 venue_3 = Venue.create!(
   name: 'El Barri Secret Garden',
-  photo: "https://images.unsplash.com/photo-1425421598808-4a22ce59cc97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)",
   price: 892.23,
   rating: 4.2,
   address: "Mas Casamitjana, Moià, Barcelona, 08180, Spain",
   description: "‘El Barri’ translates from the Catalan as ‘the neighbourhood’ but in the case of Masia farmhouses like ours it is also the traditional Catalan name for the enclosed exterior courtyard space in front of the house. With all the doors of Els Graners open it combines with El Barri to become an incredible multi-use event space that could seat 150+ for a wedding banquet, or even more standing, dancing, drinking or lounging, with a perfect mix of sun and shade keeping everyone happy. Perhaps you’d like to use one part for the dance floor, or add a stage for some live music, or transform another part into a comfy lounge area? Or perhaps you’d like to hold your ceremony in the courtyard? You decide.",
   user: user_3)
+  url3 = "https://images.unsplash.com/photo-1425421598808-4a22ce59cc97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)"
+  venue_3.remote_photo_url = url3
+  venue_3.save!
 
 Booking.create!(
  check_in: 20190501,
