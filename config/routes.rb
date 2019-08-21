@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :venues do
     resources :bookings, only: [:new, :create]
   end
-  resources :bookings, except: [:new, :create]
+  resources :bookings, except: [:new, :create] do
+    resources :venue_reviews, only: [:new, :create]
+  end
+  resources :venue_reviews, except: [:new, :create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
