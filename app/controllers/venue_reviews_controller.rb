@@ -1,17 +1,19 @@
-class VenueReviewsController < ApplicationControllerbookingdef new
+class VenueReviewsController < ApplicationController
   def new
     @user = current_user
-    @review = Review.new
-    @booking = Booking.find(params[:venue_id])
+    @review = VenueReview.new
+    @booking = Booking.find(params[:booking_id])
+    authorize @review
   end
 
   def create
-    @review = Review.new(review_params)
+    @review = VenueReview.new(review_params)
     @user = current_user
-    @booking = Booking.find(params[:venue_id])
-    @review.user = @user
+    @booking = Booking.find(params[:booking_id])
+    @review.booking = @booking
+    authorize @review
     if @review.save
-      redirect_to venue_path(@booking)
+      redirect_to profile_path
     else
       render :new
     end
@@ -19,12 +21,14 @@ class VenueReviewsController < ApplicationControllerbookingdef new
 
   def destroy
     @user = current_user
-    @review = Review.find(params[:id])
+    @review = VenueReview.find(params[:id])
+    @review.delete
+    authorize @review
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:rating, :description)
+    params.require(:venue_review).permit(:rating, :description)
   end
 end

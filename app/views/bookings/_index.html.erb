@@ -2,6 +2,11 @@
 <% current_user.bookings.each do |booking| %>
 <li><%= booking.check_in %>
  <%= booking.check_out %></li>
+ <%= link_to "Create a Review", new_booking_venue_review_path(booking) %>
    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= booking.venue.photo %>')"></div>
+ <% booking.venue_reviews.each do |review| %>
+ <li><%= review.rating %>
+ <%= review.description %></li>
+<% end %>
  <% end %>
 </div>
