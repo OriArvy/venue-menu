@@ -49,7 +49,7 @@ class VenuesController < ApplicationController
     @venue = Venue.find(params[:id])
     @venue.delete
     authorize @venue
-    redirect_to venues_path
+    redirect_to root_path
   end
 
   private
