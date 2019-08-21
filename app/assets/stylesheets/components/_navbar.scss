@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: rgba(13,28,42,0.9);
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -15,10 +15,11 @@
   white-space: nowrap;
 }
 
-#logo {
-  font-size: 30px;
-  color: #35A7FF;
-  padding-left: 12px;
+#logo-text {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 24px;
+  vertical-align: bottom;
+  color: white;
 }
 
 .search-form-control {
@@ -55,5 +56,23 @@
   flex-grow: 1;
   justify-content: flex-start;
   width: 50%;
-
 }
+
+.nav-link {
+  color: white;
+}
+
+#nav-link-white {
+  color: white;
+}
+
+#navbar-homepage {
+  background: rgba(0,0,0,0.0);
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  justify-content: space-between;
+}
+
+
+
