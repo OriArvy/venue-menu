@@ -1,9 +1,9 @@
 .footer {
-  background: #FFF;
+  background: rgba(13,28,42,0.9);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100px;
+  height: 55px;
   padding: 0px 50px;
   color: rgba(0,0,0,0.3);
 }
@@ -12,10 +12,9 @@
   align-items: center;
 }
 .footer-links a {
-  color: black;
-  opacity: 0.5;
+  color: white;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 16px;
   padding: 0px 18px;
 }
 .footer-links a:hover {
@@ -23,13 +22,14 @@
 }
 
 .footer-copyright {
-  color: black;
-  opacity: 0.65;
+  color: white;
   font-weight: lighter;
 }
 
 .footer-copyright i{
-  color: black;
-  opacity: 0.65;
-  font-weight: lighter;
+  color: white;
+}
+
+.my-container {
+  min-height: calc(100vh - 149px);
 }
