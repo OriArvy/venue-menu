@@ -28,13 +28,14 @@ class VenuesController < ApplicationController
   end
 
   def edit
-      @venue = Venue.find(params[:id])
-      authorize @venue
+    @venue = Venue.find(params[:id])
+    authorize @venue
   end
 
   def update
     @venue = Venue.find(params[:id])
     if @venue.update(venue_params)
+      authorize @venue
       redirect_to venue_path(@venue)
     else
       render :new
