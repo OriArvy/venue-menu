@@ -14,41 +14,13 @@
             <h1 class="card-title mb-0 mt-0 pl-3"><%= @venue.name %></h1>
             <h3 class="text-center pr-4 pt-2">£<%= @venue.price %>/day</h3>
           </div>
-          <h5 class="text-left pb-4"><%= @venue.address %></h5>
-
-          <p class="card-text "><%= @venue.description %></p>
-          <div class="row justify-content-center">
-
-          </div>
-
-          <a href="#modal">
-            <div class="btn-primary">
-              <p>See All Reviews</p>
-            </div>
-          </a>
 
 
-
-
-          <!-- Trigger/Open The Modal -->
-<!--           <button id="myBtn">Open Modal</button> -->
-
-          <!-- The Modal -->
-<!--           <div id="myModal" class="modal"> -->
-
-            <!-- Modal content -->
-<!--             <div class="modal-content">
-              <span class="close">&times;</span>
-              <p>Some text in the Modal..</p>
-            </div>
-
-          </div> -->
-
-
-          <div class="row justify-content-center">
-            <h3 class="text-center mb-5 border border-dark">Rating: <br> <% if @venue.rating.nil? == true %> No ratings yet
+          <div class="row justify-content-between pl-3 pr-3">
+            <h5 class="text-left pb-3"><%= @venue.address %></h5>
+            <h4 class="text-center mb-3"><% if @venue.rating.nil? == true %> No ratings yet
               <% else %>
-                <% if @venue.rating.between?(4.8, 5) %>
+                <span class="gold"><% if @venue.rating.between?(4.8, 5) %>
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
 
                 <% elsif @venue.rating.between?(4.5, 4.799)  %>
@@ -74,10 +46,49 @@
 
                 <% elsif @venue.rating.between?(1, 1.5)  %>
                 <i class="fas fa-star"></i>
-                <% end  %>
-                (<%= @venue.rating %>)
+                <% end  %></span>
+                <span class="text-italic">(<%= @venue.rating %>)</span>
               <% end %>
-            </h3>
+            </h4>
+
+
+          </div>
+          <div class="row">
+            <div class="col-lg-8"><h5 class="text-left">Overview</h5><p class="card-text text-justify"><%= @venue.description %></p></div>
+            <div class="col-lg-4 pt-5 border border-dark"><p class="card-text">*map here*</p></div>
+          </div>
+
+          <div><br><h5>Amenties</h5>
+          <p>*Images of amenities*</p><br>
+          </div>
+          <a href="#modal">
+            <div class="btn-primary" id="btn-color-override">
+              <p>See All Reviews</p>
+            </div>
+          </a>
+
+
+
+
+
+
+          <!-- Trigger/Open The Modal -->
+<!--           <button id="myBtn">Open Modal</button> -->
+
+          <!-- The Modal -->
+<!--           <div id="myModal" class="modal"> -->
+
+            <!-- Modal content -->
+<!--             <div class="modal-content">
+              <span class="close">&times;</span>
+              <p>Some text in the Modal..</p>
+            </div>
+
+          </div> -->
+
+
+          <div class="row justify-content-center">
+
           </div>
 
     <!-- These need to be user_signed_in ?-->
@@ -117,8 +128,23 @@
 
 
 <div id="modal" class="popup">
-  <div class="popup_content">
-    test
+  <div class="popup_content p-3">
+    <h1>Reviews</h1>
+      <p class="gold"><% @venue.venue_reviews.each do |review| %>
+        <% if review.rating.between?(1, 2) %>
+          <i class="fas fa-star"></i><br>
+        <% elsif review.rating.between?(2, 3) %>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><br>
+        <% elsif review.rating.between?(3, 4) %>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><br>
+        <% elsif review.rating.between?(4, 4.7) %>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><br><i class="fas fa-star"></i><br>
+        <% elsif review.rating.between?(4.7, 5) %>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"><i class="fas fa-star"></i><br><i class="fas fa-star"></i><br>
+        <% end %><p>
+        <%= review.description%>
+
+      <% end %>
     <a class="popup_close" href="/venues/<%= @venue.id %>">&times;</a>
   </div>
 </div>
