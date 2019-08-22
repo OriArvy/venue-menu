@@ -1,6 +1,8 @@
-<div class="container">
-  <div class="row">
-      <img class="col-lg-12 pt-3" src=<%= @venue.photo %> alt=''>
+<div class="container pt-3">
+  <div class="row justify-content-center">
+      <div id="show-card" class="col-lg-12 pt-3" style="background-repeat: no-repeat; background-size: 100%; height: 660px; background-image: url(<%= @venue.photo %>);"></div>
+
+
   </div>
 
 
@@ -12,13 +14,14 @@
         <div class="card-body text-center">
           <div class="row justify-content-between">
             <h1 class="card-title mb-0 mt-0 pl-3"><%= @venue.name %></h1>
-            <h3 class="text-center pr-4 pt-2">£<%= @venue.price %>/day</h3>
+            <h3 class="text-center pr-4 pt-2 ">£<%= @venue.price %>/day</h3>
           </div>
 
 
           <div class="row justify-content-between pl-3 pr-3">
             <h5 class="text-left pb-3"><%= @venue.address %></h5>
-            <h4 class="text-center mb-3"><% if @venue.rating.nil? == true %> No ratings yet
+            <a href="#modal" style="text-decoration:none; color: black;">
+            <h4 class="text-center mb-0"><% if @venue.rating.nil? == true %> No ratings yet
               <% else %>
                 <span class="gold"><% if @venue.rating.between?(4.8, 5) %>
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -47,50 +50,23 @@
                 <% elsif @venue.rating.between?(1, 1.5)  %>
                 <i class="fas fa-star"></i>
                 <% end  %></span>
-                <span class="text-italic">(<%= @venue.rating %>)</span>
+                <span class="no-dec">(<%= @venue.rating %>)</span>
               <% end %>
             </h4>
+            </a>
 
 
           </div>
           <div class="row">
-            <div class="col-lg-8"><h5 class="text-left">Overview</h5><p class="card-text text-justify"><%= @venue.description %></p></div>
-            <div class="col-lg-4 pt-5 border border-dark"><p class="card-text">*map here*</p></div>
+            <h5 class="pl-3"></h5><p class="card-text text-justify pl-3 pr-3 pt-4 pb-3"><%= @venue.description %></p>
           </div>
 
-          <div><br><h5>Amenties</h5>
-          <p>*Images of amenities*</p><br>
-          </div>
-          <a href="#modal">
-            <div class="btn-primary" id="btn-color-override">
-              <p>See All Reviews</p>
-            </div>
-          </a>
-
-
-
-
-
-
-          <!-- Trigger/Open The Modal -->
-<!--           <button id="myBtn">Open Modal</button> -->
-
-          <!-- The Modal -->
-<!--           <div id="myModal" class="modal"> -->
-
-            <!-- Modal content -->
-<!--             <div class="modal-content">
-              <span class="close">&times;</span>
-              <p>Some text in the Modal..</p>
+          <h5 class="pb-2 pt-3 text-center">Amenties</h5>
+            <div class="row justify-content-around pt-3 pb-5 pl-5 pr-5 mr-3 ml-3">
+              <i id="amen-icon" class="fas fa-wheelchair"></i><i id="amen-icon" class="fas fa-glass-cheers"></i><i id="amen-icon" class="fas fa-utensils"></i><i id="amen-icon" class="fas fa-parking"></i><i id="amen-icon" class="fas fa-restroom"></i>
             </div>
 
-          </div> -->
-
-
-          <div class="row justify-content-center">
-
-          </div>
-    <!-- These need to be user_signed_in ?-->
+          <h5 class="pb-2 pt-3 text-center">Location</h5>
           <div class="mapwrapper">
             <div
               id="map"
@@ -102,28 +78,26 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-3 booking-form border border-white mt-3" >
-      <% if current_user == @venue.user %>
-        <div id="show-card" class="text-center p-2 rounded bg-light text-dark mr-3">
-          <h5 href="#">Your Venue</h5>
-          <%= link_to "Edit",edit_venue_path(@venue), class: "btn btn-light" %>
-          <%= link_to 'Delete', venue_path(@venue), method: :delete, class: "btn btn-light"  %>
-        </div>
-      <% else %>
-      <%= simple_form_for [@venue, @booking] do |f| %>
-        <div class="form-inputs">
-          <%= f.input :check_in %>
-          <%= f.input :check_out %>
-        </div>
-        <div class="form-actions">
-          <%= f.button :submit, "Book now", id: "btn-color-override", class: "btn btn-primary" %>
-        </div>
+    <div class="col-lg-3 mt-3" >
+      <div id="show-card" class="card text-center bg-light">
+        <% if current_user == @venue.user %>
+          <div id="show-card" class="text-center p-2 bg-light text-dark">
+            <h5 href="#">Venue Admin Area</h5>
+            <%= link_to "Edit",edit_venue_path(@venue), id:"show-card", class: "btn btn-warning" %>
+            <%= link_to 'Delete', venue_path(@venue), method: :delete, id:"show-card", class: "btn btn-danger "  %>
+          </div>
+        <% else %>
+        <%= simple_form_for [@venue, @booking] do |f| %>
+          <div class="form-inputs">
+            <%= f.input :check_in %>
+            <%= f.input :check_out %>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Book now", id: "show-card", class: "btn btn-primary btn-block" %>
+          </div>
+          <% end %>
+          </div>
         <% end %>
-
-
-
-
-      <% end %>
     </div>
   </div>
 
@@ -133,20 +107,22 @@
 <div id="modal" class="popup">
   <div class="popup_content p-3">
     <h1>Reviews</h1>
-      <p class="gold"><% @venue.venue_reviews.each do |review| %>
-        <% if review.rating.between?(1, 2) %>
-          <i class="fas fa-star"></i><br>
-        <% elsif review.rating.between?(2, 3) %>
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><br>
-        <% elsif review.rating.between?(3, 4) %>
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><br>
-        <% elsif review.rating.between?(4, 4.7) %>
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><br><i class="fas fa-star"></i><br>
-        <% elsif review.rating.between?(4.7, 5) %>
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"><i class="fas fa-star"></i><br><i class="fas fa-star"></i><br>
-        <% end %><p>
-        <%= review.description%>
-
+      <% @venue.venue_reviews.each do |review| %>
+        <div id="show-card">
+        <strong>Name:</strong> <%= %><br>
+          <% if review.rating.between?(1, 2) %>
+            <i class="fas fa-star gold"></i><br>
+          <% elsif review.rating.between?(2, 3) %>
+            <i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><br>
+          <% elsif review.rating.between?(3, 4) %>
+            <i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><br>
+          <% elsif review.rating.between?(4, 4.7) %>
+            <i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><br>
+          <% elsif review.rating.between?(4.7, 5) %>
+            <i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><br>
+          <% end %>
+          <%= review.description%><br>
+​        </div>
       <% end %>
     <a class="popup_close" href="/venues/<%= @venue.id %>">&times;</a>
   </div>
