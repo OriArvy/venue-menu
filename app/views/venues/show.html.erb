@@ -3,37 +3,70 @@
    <img class="col-lg-12 pt-3" src=<%= @venue.photo %> alt=''>
   </div>
 
-  <div class="container">
-    <div class="row justify-content-around">
-      <% current_user.bookings.each do |booking| %>
-       <div class="card col-lg-5 mr-3 ml-3 mb-5 mt-3">
-        <img class="card-img-top pt-3 rounded" src="<%= booking.venue.photo %>" alt="Card image cap">
-        <div class="card-body">
-          <h3 class="card-title"><%= booking.venue.name %></h3>
-          <div class="card-title"><strong>Arriving:</strong> <%= booking.check_in %></div>
-          <div class="card-title"><strong>Hired for:</strong>
-            <% if (booking.check_out - booking.check_in).to_i == 0 %>
-              1 day
+  <div class="row justify-content-center overlay">
+    <div class="col-lg-9 mt-3">
+      <div class="card text-center" >
+        <div class="card-body text-center">
+          <h1 class="card-title mb-4 mt-0"><%= @venue.name %></h1>
+          <p class="card-text "><%= @venue.description %></p>
+          <div class="row justify-content-center">
+            <h3 class="text-center mt-4">Price from: £<%= @venue.price %></h3>
           </div>
-          <p class="card-title"><strong>Total Cost:</strong> £<%= booking.venue.price%></p>
-            <% else %>
-              <%= (booking.check_out - booking.check_in).to_i %> days
+          <div class="row justify-content-center">
+            <h3 class="text-center mb-5">Rating: <% if @venue.rating.nil? == true %> No ratings yet
+              <% else %>
+                <% if @venue.rating.between?(4.8, 5) %>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+
+                <% elsif @venue.rating.between?(4.5, 4.799)  %>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i>
+
+                <% elsif @venue.rating.between?(4, 4.5) %>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+
+                <% elsif @venue.rating.between?(3.5, 3.99) %>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i>
+
+                <% elsif @venue.rating.between?(3, 3.5) %>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+
+                <% elsif @venue.rating.between?(2.5, 2.99) %>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i>
+
+                <% elsif @venue.rating.between?(2, 2.5) %>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+
+                <% elsif @venue.rating.between?(1.5, 1.99) %>
+                <i class="fas fa-star"></i><i class="fas fa-star-half"></i>
+
+                <% elsif @venue.rating.between?(1, 1.5)  %>
+                <i class="fas fa-star"></i>
+                <% end  %>
+                (<%= @venue.rating %>)
+              <% end %>
+            </h3>
           </div>
-          <p class="card-title"><strong>Total Cost:</strong> £<%= booking.venue.price * ((booking.check_out - booking.check_in).to_i)  %></p>
+
+    <!-- These need to be user_signed_in ?-->
+          <div class="booking-form" >
+            <%= simple_form_for [@venue, @booking] do |f| %>
+            <div class="form-inputs">
+              <%= f.input :check_in %>
+              <%= f.input :check_out %>
+            </div>
+            <div class="form-actions">
+            <%= f.button :submit, "Book now", id: "btn-color-override", class: "btn btn-primary" %>
+            </div>
             <% end %>
-          <div class="card-title"><strong>Payment completed?:</strong> <% if booking.payment_completed? %>
-                  Yes
-                  <% else %>
-                  No
-                  <% end %>
           </div>
-            <a href="<%= venue_path(booking.venue_id) %>" id ="btn-color-override"class="btn btn-primary btn-block">Venue Details</a>
-          </div>
+
+          <% if current_user == @venue.user %>
+            <%= link_to "Edit Venue",edit_venue_path(@venue), class: "btn btn-warning" %>
+            <%= link_to 'Delete venue', venue_path(@venue), method: :delete, class: "btn btn-warning"  %>
+          <% end %>
+
         </div>
-      <% end %>
+      </div>
     </div>
   </div>
-
-
-
 </div>

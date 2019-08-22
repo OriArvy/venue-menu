@@ -1,7 +1,7 @@
 class VenuesController < ApplicationController
 
   def index
-    # @venues = policy_scope(Venue).all
+    @venues = policy_scope(Venue).all
 
     @venues = Venue.geocoded
     @markers = @venues.map do |venue|
@@ -10,7 +10,7 @@ class VenuesController < ApplicationController
         lng: venue.longitude
       }
     end
-    authorize @venue
+    # authorize @venue
   end
 
   def show
