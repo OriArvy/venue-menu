@@ -1,2 +1,31 @@
+<div class="container">
+  <div class="mapwrapper">
+    <div
+      id="map"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    >
+    </div>
+  </div>
+
+  <div class="col-lg-12" id="results-under-map">
+    <div class="container">
+      <div class="row justify-content-around">
+        <% @venues.each do |venue| %>
+          <div class="card col-lg-5 mr-3 ml-3 mb-5 mt-3">
+            <img class="card-img-top pt-3 rounded" src="<%= venue.photo %>" alt="Card image cap">
+            <div class="card-body">
+              <h3 class="card-title"><%= venue.name %></h3>
+              <div class="card-title"><strong>Address:</strong><%= venue.address %></div>
+              <div class="card-title"><strong>Price from:</strong>£<%= venue.price %></div>
+              <div class="card-title"><strong>Rating:</strong><%= venue.rating %></div>
+            </div>
+            <a href="<%= venue_path(venue.id) %>" id ="btn-color-override"class="btn btn-primary btn-block">Venue Details</a>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
 
