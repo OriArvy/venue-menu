@@ -1,16 +1,20 @@
 class VenuesController < ApplicationController
 
   def index
-    @venues = policy_scope(Venue).all
+    if params[:query].present?
+      @venues = policy_scope(Venue)
+      @venues = Venue.search_by_name_and_address(params[:query]).geocoded
+    else
+      @venues = policy_scope(Venue)
+    end
 
-    @venues = Venue.geocoded
     @markers = @venues.map do |venue|
       {
         lat: venue.latitude,
         lng: venue.longitude
       }
     end
-    # authorize @venue
+
   end
 
   def show
