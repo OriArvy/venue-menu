@@ -1,19 +1,52 @@
 <div class="container">
   <div class="row">
-   <img class="col-lg-12 pt-3" src=<%= @venue.photo %> alt=''>
+      <img class="col-lg-12 pt-3" src=<%= @venue.photo %> alt=''>
   </div>
 
-  <div class="row justify-content-center overlay">
-    <div class="col-lg-9 mt-3">
-      <div class="card text-center" >
+
+
+  <div class="row justify-content-between">
+
+    <div  class="offset-lg-1 col-lg-8 overlay">
+      <div id="show-card" class="card text-center bg-light" >
         <div class="card-body text-center">
-          <h1 class="card-title mb-4 mt-0"><%= @venue.name %></h1>
+          <div class="row justify-content-between">
+            <h1 class="card-title mb-0 mt-0 pl-3"><%= @venue.name %></h1>
+            <h3 class="text-center pr-4 pt-2">£<%= @venue.price %>/day</h3>
+          </div>
+          <h5 class="text-left pb-4"><%= @venue.address %></h5>
+
           <p class="card-text "><%= @venue.description %></p>
           <div class="row justify-content-center">
-            <h3 class="text-center mt-4">Price from: £<%= @venue.price %></h3>
+
           </div>
+
+          <a href="#modal">
+            <div class="btn-primary">
+              <p>See All Reviews</p>
+            </div>
+          </a>
+
+
+
+
+          <!-- Trigger/Open The Modal -->
+<!--           <button id="myBtn">Open Modal</button> -->
+
+          <!-- The Modal -->
+<!--           <div id="myModal" class="modal"> -->
+
+            <!-- Modal content -->
+<!--             <div class="modal-content">
+              <span class="close">&times;</span>
+              <p>Some text in the Modal..</p>
+            </div>
+
+          </div> -->
+
+
           <div class="row justify-content-center">
-            <h3 class="text-center mb-5">Rating: <% if @venue.rating.nil? == true %> No ratings yet
+            <h3 class="text-center mb-5 border border-dark">Rating: <br> <% if @venue.rating.nil? == true %> No ratings yet
               <% else %>
                 <% if @venue.rating.between?(4.8, 5) %>
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -46,20 +79,7 @@
               <% end %>
             </h3>
           </div>
-
     <!-- These need to be user_signed_in ?-->
-          <div class="booking-form" >
-            <%= simple_form_for [@venue, @booking] do |f| %>
-            <div class="form-inputs">
-              <%= f.input :check_in %>
-              <%= f.input :check_out %>
-            </div>
-            <div class="form-actions">
-            <%= f.button :submit, "Book now", id: "btn-color-override", class: "btn btn-primary" %>
-            </div>
-            <% end %>
-          </div>
-
           <div class="mapwrapper">
             <div
               id="map"
@@ -68,15 +88,40 @@
               >
             </div>
           </div>
-
-
-          <% if current_user == @venue.user %>
-            <%= link_to "Edit Venue",edit_venue_path(@venue), class: "btn btn-warning" %>
-            <%= link_to 'Delete venue', venue_path(@venue), method: :delete, class: "btn btn-warning"  %>
-          <% end %>
-
         </div>
       </div>
     </div>
+    <div class="col-lg-3 booking-form border border-white mt-3" >
+      <% if current_user == @venue.user %>
+        <div id="show-card" class="text-center p-2 rounded bg-light text-dark mr-3">
+          <h5 href="#">Your Venue</h5>
+          <%= link_to "Edit",edit_venue_path(@venue), class: "btn btn-light" %>
+          <%= link_to 'Delete', venue_path(@venue), method: :delete, class: "btn btn-light"  %>
+        </div>
+      <% else %>
+      <%= simple_form_for [@venue, @booking] do |f| %>
+        <div class="form-inputs">
+          <%= f.input :check_in %>
+          <%= f.input :check_out %>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, "Book now", id: "btn-color-override", class: "btn btn-primary" %>
+        </div>
+        <% end %>
+
+
+
+
+      <% end %>
+    </div>
+  </div>
+
+</div>
+
+
+<div id="modal" class="popup">
+  <div class="popup_content">
+    test
+    <a class="popup_close" href="/venues/<%= @venue.id %>">&times;</a>
   </div>
 </div>
