@@ -1,33 +1,34 @@
 <div class="container">
   <div class="row justify-content-around">
     <% current_user.bookings.each do |booking| %>
-     <div class="card col-lg-5 mr-3 ml-3 mb-5 mt-3">
-      <img class="card-img-top pt-3 rounded" src="<%= booking.venue.photo %>" alt="Card image cap">
-      <div class="card-body">
-        <h3 class="card-title"><%= booking.venue.name %></h3>
-        <div class="card-title"><strong>Arriving:</strong> <%= booking.check_in %></div>
-        <div class="card-title"><strong>Hired for:</strong>
-          <% if (booking.check_out - booking.check_in).to_i == 0 %>
-            1 day
-        </div>
-        <p class="card-title"><strong>Total Cost:</strong> £<%= booking.venue.price%></p>
+      <div class="card col-lg-5 mr-3 ml-3 mb-5 mt-3">
+        <img class="card-img-top pt-3 rounded" src="<%= booking.venue.photo %>" alt="Card image cap">
+        <div class="card-body">
+          <h3 class="card-title"><%= booking.venue.name %></h3>
+          <div class="card-title"><strong>Arriving:</strong> <%= booking.check_in %></div>
+          <div class="card-title"><strong>Hired for:</strong>
+            <% if (booking.check_out - booking.check_in).to_i == 0 %>
+              1 day
+          <p class="card-title"><strong>Total Cost:</strong> £<%= booking.venue.price%></p>
+          </div>
           <% else %>
             <%= (booking.check_out - booking.check_in).to_i %> days
-        </div>
-        <p class="card-title"><strong>Total Cost:</strong> £<%= booking.venue.price * ((booking.check_out - booking.check_in).to_i)  %></p>
-          <% end %>
-        <div class="card-title"><strong>Payment completed?:</strong> <% if booking.payment_completed? %>
-                Yes
-                <% else %>
-                No
-                <% end %>
-        </div>
+
+          <p class="card-title"><strong>Total Cost:</strong> £<%= booking.venue.price * ((booking.check_out - booking.check_in).to_i)  %></p>
+          </div>
+            <% end %>
+          <div class="card-title"><strong>Payment Status:</strong> <% if booking.payment_completed? %>
+            <label class="bg-success text-white rounded pl-1 pr-1">Paid</label>
+            <% else %>
+            <label class="bg-danger text-white rounded pl-1 pr-1">Not paid</label>
+            <% end %>
+          </div>
 
 
 
 
-          <a href="<%= venue_path(booking.venue_id) %>" id ="btn-color-override"class="btn btn-primary btn-block">Venue Details</a>
-           <%= link_to "Create a Review", new_booking_venue_review_path(booking), class: "btn btn-success btn-block" %>
+          <a href="<%= venue_path(booking.venue_id) %>" id ="btn-color-override" class="btn btn-primary btn-block">Venue Details</a>
+           <%= link_to "Review this venue", new_booking_venue_review_path(booking), id: "btn-color-override", class: "btn btn-primary btn-block" %>
 
         </div>
       </div>
