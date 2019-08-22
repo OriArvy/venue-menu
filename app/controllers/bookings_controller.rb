@@ -22,8 +22,8 @@ class BookingsController < ApplicationController
     @booking.user = @user
     @venue = Venue.find(params[:venue_id])
     @booking.venue = @venue
+    authorize @booking
     if @booking.save
-      authorize @booking
       redirect_to profile_path
     else
       authorize @venue
@@ -38,8 +38,8 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
+    authorize @booking
     if @booking.update(booking_params)
-      authorize @booking
       redirect_to booking_path(booking)
     else
       render :new

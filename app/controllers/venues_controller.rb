@@ -35,8 +35,8 @@ class VenuesController < ApplicationController
     @venue = Venue.new(venue_params)
     @user = current_user
     @venue.user = @user
+    authorize @venue
     if @venue.save
-      authorize @venue
       redirect_to venue_path(@venue)
     else
       render :new
@@ -50,8 +50,8 @@ class VenuesController < ApplicationController
 
   def update
     @venue = Venue.find(params[:id])
+    authorize @venue
     if @venue.update(venue_params)
-      authorize @venue
       redirect_to venue_path(@venue)
     else
       render :new
@@ -60,8 +60,8 @@ class VenuesController < ApplicationController
 
   def destroy
     @venue = Venue.find(params[:id])
-    @venue.delete
     authorize @venue
+    @venue.delete
     redirect_to root_path
   end
 
