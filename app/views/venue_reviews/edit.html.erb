@@ -1,5 +1,11 @@
-<%= simple_form_for [@booking, @review] do |f| %>
-  <%= f.input :rating %>
-  <%= f.input :description %>
-  <%= f.submit %>
-<% end %>
+<div class="container center-div">
+  <div class="text-center">
+    <%= simple_form_for [@booking, @review] do |f| %>
+      <%= f.input :description, label: 'Tell us about your stay', as: :text %>
+        <div id="stars-center">
+          <%= f.input :rating, collection: (1..5).to_a %>
+        </div>
+          <%= f.submit "Add a review", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

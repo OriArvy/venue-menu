@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.6.3'
 
+gem 'pg_search'
 gem 'pundit'
 gem 'carrierwave', '~> 1.2'
 gem 'cloudinary', '~> 1.9.1'
@@ -18,6 +19,8 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'geocoder'
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'
