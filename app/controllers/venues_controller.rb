@@ -11,7 +11,9 @@ class VenuesController < ApplicationController
     @markers = @venues.map do |venue|
       {
         lat: venue.latitude,
-        lng: venue.longitude
+        lng: venue.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { venue: venue }),
+        image_url: helpers.asset_url(venue.photo)
       }
     end
 
@@ -23,6 +25,14 @@ class VenuesController < ApplicationController
     @user = current_user
     authorize @booking
     authorize @venue
+
+    @markers = [{
+        lat: @venue.latitude,
+        lng: @venue.longitude,
+        infoWindow: nil,
+        image_url: helpers.asset_url(@venue.photo)
+      }]
+
   end
 
   def new
