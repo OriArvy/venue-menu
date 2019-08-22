@@ -1,7 +1,12 @@
 class VenuesController < ApplicationController
 
   def index
-    @venues = policy_scope(Venue).all
+    if params[:query].present?
+      @venues = policy_scope(Venue)
+      @venues = Venue.search_by_name_and_address(params[:query])
+    else
+      @venues = policy_scope(Venue)
+    end
   end
 
   def show

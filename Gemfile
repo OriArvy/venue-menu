@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.6.3'
 
+gem 'pg_search'
 gem 'pundit'
 gem 'carrierwave', '~> 1.2'
 gem 'cloudinary', '~> 1.9.1'
