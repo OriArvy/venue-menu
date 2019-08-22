@@ -60,6 +60,16 @@
             <% end %>
           </div>
 
+          <div class="mapwrapper">
+            <div
+              id="map"
+                data-markers="<%= @markers.to_json %>"
+                data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+              >
+            </div>
+          </div>
+
+
           <% if current_user == @venue.user %>
             <%= link_to "Edit Venue",edit_venue_path(@venue), class: "btn btn-warning" %>
             <%= link_to 'Delete venue', venue_path(@venue), method: :delete, class: "btn btn-warning"  %>

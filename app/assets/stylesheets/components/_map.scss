@@ -1,7 +1,7 @@
 #map {
   margin-top: 20px;
-  width: 70%;
-  height: 300px;
+  width: 89%;
+  height: 400px;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -9,8 +9,31 @@
 }
 
 #results-under-map {
-  margin-top: 20px;
+  margin-top: 0.0px;
 }
 
 .mapwrapper {
 }
+
+
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+
+.mapboxgl-popup-content {
+  color: rgba(13,28,42,0.9);
+  text-align: center;
+  font-family: "Open Sans", "Helvetica", sans-serif;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 10px;
+}
+
+#info {
+  padding: 5px;
+
+  a {
+    color: rgba(13,28,42,0.9);
+  }
+}
+
