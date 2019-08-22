@@ -34,7 +34,7 @@ venue_2 = Venue.create!(
   name: 'Iconic Igloo',
   price: 237.2,
   rating: 4.2,
-  address: "Igloo Disco, Golden Soul Leisure LTD, 71 Kirkstall Road, Leeds, LS3 1LH",
+  address: "Lenangsveien 1483, Nord-lenangen, Norway",
   description: "Our inflatable igloos come in various sizes & styles, suitable for any outdoor party, wedding, corporate event, exhibition or festival. Our waterproof inflatable structures provide a jaw-dropping temporary shelter for your function, whatever the weather. The igloos can be installed quickly and easily by a small team, providing a striking, economical alternative to traditional marquee hire.",
   user: user_2)
   url2 = "https://images.unsplash.com/photo-1548278651-843b1d7431a9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)"
@@ -45,7 +45,7 @@ venue_3 = Venue.create!(
   name: 'El Barri Secret Garden',
   price: 892.23,
   rating: 4.2,
-  address: "Mas Casamitjana, Moià, Barcelona, 08180, Spain",
+  address: "Grove Rd, London E3 5TB",
   description: "‘El Barri’ translates from the Catalan as ‘the neighbourhood’ but in the case of Masia farmhouses like ours it is also the traditional Catalan name for the enclosed exterior courtyard space in front of the house. With all the doors of Els Graners open it combines with El Barri to become an incredible multi-use event space that could seat 150+ for a wedding banquet, or even more standing, dancing, drinking or lounging, with a perfect mix of sun and shade keeping everyone happy. Perhaps you’d like to use one part for the dance floor, or add a stage for some live music, or transform another part into a comfy lounge area? Or perhaps you’d like to hold your ceremony in the courtyard? You decide.",
   user: user_3)
   url3 = "https://images.unsplash.com/photo-1425421598808-4a22ce59cc97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)"
