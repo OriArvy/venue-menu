@@ -1,4 +1,9 @@
 class VenueReviewsController < ApplicationController
+  def index
+    @review = VenueReview.find(params[:id])
+    authorize @review
+  end
+
   def new
     @user = current_user
     @review = VenueReview.new
