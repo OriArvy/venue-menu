@@ -1,10 +1,27 @@
+<div class="container form-group col-sm-6" id="center-form">
+  <h1 class="form-h1-padding">Add your venue!</h1>
 <%= simple_form_for @venue do |f| %>
-  <%= f.input :name %>
-  <%= f.input :price %>
-  <%= f.input :address %>
-  <%= f.input :description %>
-  <%= f.input :photo %>
-  <%= f.input :photo_cache, as: :hidden  %>
+  <div class="form-style">
+  <%= f.input :name, label: 'Choose a name for your venue', placeholder: "Venue name" %>
+  </div>
 
-  <%= f.submit %>
+  <div class="form-style">
+  <%= f.input :price, label: 'Price for one night stay', placeholder: "£200" %>
+  </div>
+
+  <div class="form-style">
+  <%= f.input :address, label: 'Full address of the venue', placeholder: "Address"  %>
+  </div>
+
+  <div class="form-style">
+  <%= f.input :description, label: 'Please give us some details about your venue', placeholder: "Description"  %>
+  </div>
+
+
+  <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
+  <%= f.input :photo, input_html: { class: 'd-none', id: "photo-input" }, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
+
+
+  <%= f.submit "Add a venue", class: "btn btn-primary" %>
 <% end %>
+</div>
