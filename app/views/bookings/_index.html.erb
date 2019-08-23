@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="row justify-content-around">
+  <div class="row justify-content-center">
     <% current_user.bookings.each do |booking| %>
-      <div class="card col-lg-5 mr-3 ml-3 mb-5 mt-3">
+      <div id="show-card" class="card col-lg-5 mr-2 ml-2 mb-3">
         <img class="card-img-top pt-3 rounded" src="<%= booking.venue.photo %>" alt="Card image cap">
         <div class="card-body">
           <h3 class="card-title"><%= booking.venue.name %></h3>
