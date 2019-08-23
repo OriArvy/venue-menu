@@ -1,4 +1,4 @@
-
+<div class="my-container">
 <div class="container" id="map_container">
   <div class="mapwrapper" style="z-index:10">
     <div
@@ -8,6 +8,13 @@
     >
     </div>
   </div>
+
+  <%if @venues.blank? %>
+  <div id="no-results">
+    <p id="no-results-msg">Sorry, your search returned no results, please try again</p>
+  </div>
+
+  <% else %>
   <div class="col-lg-12" id="results-under-map" style="z-index:1">
     <div class="container">
       <div class="row justify-content-around">
@@ -26,4 +33,6 @@
       </div>
     </div>
   </div>
+  <% end %>
+</div>
 </div>
