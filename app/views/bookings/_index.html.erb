@@ -5,7 +5,7 @@
         <img class="card-img-top pt-3 rounded" src="<%= booking.venue.photo %>" alt="Card image cap">
         <div class="card-body">
           <h3 class="card-title"><%= booking.venue.name %></h3>
-          <div class="card-title"><strong>Arriving:</strong> <%= booking.check_in %></div>
+          <div class="card-title"><strong>Arriving:</strong> <%= (booking.check_in).strftime("%m/%d/%Y") %></div>
           <div class="card-title"><strong>Hired for:</strong>
             <% if (booking.check_out - booking.check_in).to_i == 0 %>
               1 day
@@ -14,7 +14,7 @@
           <% else %>
             <%= (booking.check_out - booking.check_in).to_i %> days
 
-          <p class="card-title"><strong>Total Cost:</strong> £<%= booking.venue.price * ((booking.check_out - booking.check_in).to_i)  %></p>
+          <p class="card-title"><strong>Total Cost:</strong> £<%= booking.venue.price * ((booking.check_out - booking.check_in).to_i) %></p>
           </div>
             <% end %>
           <div class="card-title"><strong>Payment Status:</strong> <% if booking.payment_completed? %>
