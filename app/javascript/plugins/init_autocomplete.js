@@ -18,5 +18,4 @@ const initAutocompleteById = () => {
 export { initAutocomplete };
 export { initAutocompleteById };
 
-// initAutocomplete();
 
