@@ -19,7 +19,7 @@
             <h5 class="text-left pb-3"><%= @venue.address %></h5>
 
             <a data-toggle="modal" data-target="#exampleModalScrollable" style="text-decoration:none; color: black;">
-            <h4 class="text-center mb-0"><% if @venue.rating.nil? == true %> No ratings yet
+            <h4 class="text-center mb-0"><% if @venue.result.nan? == true %> No ratings yet
               <% else %>
                  <span class="gold">
                 <% if @venue.result >= 4.8 && @venue.result <= 5 %>
@@ -116,15 +116,15 @@
         <% @venue.venue_reviews.each do |review| %>
           <div id="show-card">
           <strong>Name:</strong> <%= %><br>
-            <% if review.rating.between?(1, 2) %>
+            <% if review.rating == 1 %>
               <i class="fas fa-star gold"></i><br>
-            <% elsif review.rating.between?(2, 3) %>
+            <% elsif review.rating == 2 %>
               <i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><br>
-            <% elsif review.rating.between?(3, 4) %>
+            <% elsif review.rating == 3 %>
               <i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><br>
-            <% elsif review.rating.between?(4, 4.7) %>
+            <% elsif review.rating == 4 %>
               <i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><br>
-            <% elsif review.rating.between?(4.7, 5) %>
+            <% elsif review.rating == 5 %>
               <i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><br>
             <% end %>
             <%= review.description%><br>
