@@ -12,15 +12,15 @@
     <div class="container">
       <div class="row justify-content-around">
         <% @venues.each do |venue| %>
-          <div id="show-card" class="card col-lg-4 mr-1 ml-1 mb-3 mt-3">
+          <div id="show-card" class="card col-lg-5 mr-1 ml-1 mb-1 mt-3">
             <img class="card-img-top pt-3 rounded" src="<%= venue.photo %>" alt="Card image cap">
             <div class="card-body p-1">
-              <h3 class="card-title"><%= venue.name %></h3>
+              <h3 class="card-title mb-0"><%= venue.name %></h3>
               <div class="card-title m-1"><strong>Address: </strong> <%= venue.address %></div>
               <div class="card-title m-1"><strong>Price from: </strong> £ <%= venue.price %></div>
               <div class="card-title m-1"><strong>Rating: </strong> <%= venue.rating %></div>
             </div>
-            <a href="<%= venue_path(venue.id) %>" id ="btn-color-override"class="btn btn-primary btn-block pb-2">Venue Details</a>
+            <a href="<%= venue_path(venue.id) %>" id ="btn-color-override"class="btn btn-primary btn-block mb-3">Venue Details</a>
           </div>
         <% end %>
       </div>

@@ -1,11 +1,14 @@
 #map {
   width: 89.5%;
-  height: 300px;
+  height: 250px;
   display: block;
   margin-left: auto;
   margin-right: auto;
   border: 2px solid rgba(0,0,0,0.1);
   margin-top: 20px;
+  border-radius: 8px;
+  border-color: rgba(13,28,42,0.5);
+  border-width: 1px;
 }
 
 #results-under-map {
