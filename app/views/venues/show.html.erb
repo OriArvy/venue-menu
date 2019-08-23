@@ -20,37 +20,39 @@
 
           <div class="row justify-content-between pl-3 pr-3">
             <h5 class="text-left pb-3"><%= @venue.address %></h5>
-            <a href="#modal" style="text-decoration:none; color: black;">
+
+            <a data-toggle="modal" data-target="#exampleModalScrollable" style="text-decoration:none; color: black;">
             <h4 class="text-center mb-0"><% if @venue.rating.nil? == true %> No ratings yet
               <% else %>
-                <span class="gold"><% if @venue.rating.between?(4.8, 5) %>
+                 <span class="gold">
+                <% if @venue.result >= 4.8 && @venue.result <= 5 %>
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
 
-                <% elsif @venue.rating.between?(4.5, 4.799)  %>
+                <% elsif @venue.result >= 4.5 && @venue.result <= 4.799 %>
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i>
 
-                <% elsif @venue.rating.between?(4, 4.5) %>
+                <% elsif @venue.result >= 4 && @venue.result <= 4.5 %>
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
 
-                <% elsif @venue.rating.between?(3.5, 3.99) %>
+                <% elsif @venue.result >= 3.5 && @venue.result <= 3.99 %>
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i>
 
-                <% elsif @venue.rating.between?(3, 3.5) %>
+                <% elsif @venue.result >= 3 && @venue.result <= 3.5 %>
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
 
-                <% elsif @venue.rating.between?(2.5, 2.99) %>
+                <% elsif @venue.result >= 2.5 && @venue.result <= 2.99 %>
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i>
 
-                <% elsif @venue.rating.between?(2, 2.5) %>
+                <% elsif @venue.result >= 2 && @venue.result <= 2.5 %>
                 <i class="fas fa-star"></i><i class="fas fa-star"></i>
 
-                <% elsif @venue.rating.between?(1.5, 1.99) %>
+                <% elsif @venue.result >= 1.5 && @venue.result <= 1.99 %>
                 <i class="fas fa-star"></i><i class="fas fa-star-half"></i>
 
-                <% elsif @venue.rating.between?(1, 1.5)  %>
+                <% elsif @venue.result >= 1 && @venue.result <= 1.5 %>
                 <i class="fas fa-star"></i>
                 <% end  %></span>
-                <span class="no-dec">(<%= @venue.rating %>)</span>
+                <span class="no-dec">(<%= @venue.result %>)</span>
               <% end %>
             </h4>
             </a>
@@ -61,7 +63,7 @@
             <h5 class="pl-3"></h5><p class="card-text text-justify pl-3 pr-3 pt-4 pb-3"><%= @venue.description %></p>
           </div>
 
-          <h5 class="pb-2 pt-3 text-center">Amenties</h5>
+          <h5 class="pb-2 pt-3 text-center">Amenities</h5>
             <div class="row justify-content-around pt-3 pb-5 pl-5 pr-5 mr-3 ml-3">
               <i id="amen-icon" class="fas fa-wheelchair"></i><i id="amen-icon" class="fas fa-glass-cheers"></i><i id="amen-icon" class="fas fa-utensils"></i><i id="amen-icon" class="fas fa-parking"></i><i id="amen-icon" class="fas fa-restroom"></i>
             </div>
@@ -89,8 +91,8 @@
         <% else %>
         <%= simple_form_for [@venue, @booking] do |f| %>
           <div class="form-inputs">
-            <%= f.input :check_in %>
-            <%= f.input :check_out %>
+            <%= f.input :check_in, as: :string %>
+            <%= f.input :check_out, as: :string %>
           </div>
           <div class="form-actions">
             <%= f.button :submit, "Book now", id: "show-card", class: "btn btn-primary btn-block" %>
@@ -104,27 +106,35 @@
 </div>
 
 
-<div id="modal" class="popup">
-  <div class="popup_content p-3">
-    <h1>Reviews</h1>
-      <% @venue.venue_reviews.each do |review| %>
-        <div id="show-card">
-        <strong>Name:</strong> <%= %><br>
-          <% if review.rating.between?(1, 2) %>
-            <i class="fas fa-star gold"></i><br>
-          <% elsif review.rating.between?(2, 3) %>
-            <i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><br>
-          <% elsif review.rating.between?(3, 4) %>
-            <i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><br>
-          <% elsif review.rating.between?(4, 4.7) %>
-            <i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><br>
-          <% elsif review.rating.between?(4.7, 5) %>
-            <i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><br>
-          <% end %>
-          <%= review.description%><br>
-​        </div>
-      <% end %>
-    <a class="popup_close" href="/venues/<%= @venue.id %>">&times;</a>
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div id="show-card" class="modal-content">
+      <div class="modal-header">
+          <h1>Reviews</h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <% @venue.venue_reviews.each do |review| %>
+          <div id="show-card">
+          <strong>Name:</strong> <%= %><br>
+            <% if review.rating.between?(1, 2) %>
+              <i class="fas fa-star gold"></i><br>
+            <% elsif review.rating.between?(2, 3) %>
+              <i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><br>
+            <% elsif review.rating.between?(3, 4) %>
+              <i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><br>
+            <% elsif review.rating.between?(4, 4.7) %>
+              <i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><br>
+            <% elsif review.rating.between?(4.7, 5) %>
+              <i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><br>
+            <% end %>
+            <%= review.description%><br>
+  ​        </div>
+        <% end %>
+      </div>
+    </div>
+
   </div>
-</div>
 </div>

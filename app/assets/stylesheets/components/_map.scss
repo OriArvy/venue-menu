@@ -1,18 +1,25 @@
 #map {
-  margin-top: 20px;
-  width: 89%;
-  height: 400px;
+  width: 89.5%;
+  height: 300px;
   display: block;
   margin-left: auto;
   margin-right: auto;
-
+  border: 2px solid rgba(0,0,0,0.1);
+  margin-top: 20px;
 }
 
 #results-under-map {
   margin-top: 0.0px;
 }
 
+#map_container {
+}
+
+
 .mapwrapper {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0.0000001px;
 }
 
 
