@@ -115,7 +115,7 @@
       <div class="modal-body">
         <% @venue.venue_reviews.each do |review| %>
           <div id="show-card">
-          <strong>Name:</strong> <%= %><br>
+          <strong>Name:</strong> <%= review.booking.user.name.capitalize %><br>
             <% if review.rating.between?(1, 2) %>
               <i class="fas fa-star gold"></i><br>
             <% elsif review.rating.between?(2, 3) %>

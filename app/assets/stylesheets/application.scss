@@ -13,6 +13,7 @@
 @import "pages/index";
 
 
+
 h2 {
   margin-top: 16px;
   margin-bottom: 16px;
@@ -67,12 +68,20 @@ body {
   }
 }
 
+#booking-select p:hover {
+  background-color: rgba(13,28,42,0.9);
+  padding-left: 6px;
+  border-radius: 3px;
+  color:#fff;
+}
+
 #no-results-msg {
   text-align: center;
   padding-top: 50px;
   color: rgb(50, 50, 50);
   font-size: 20px;
 }
+
 
 
 
