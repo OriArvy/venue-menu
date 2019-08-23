@@ -1,12 +1,12 @@
 <div class="container form-group col-sm-6" id="center-form">
-  <h1 class="form-h1-padding">Add your venue!</h1>
+
 <%= simple_form_for @venue do |f| %>
   <div class="form-style">
   <%= f.input :name, label: 'Choose a name for your venue', placeholder: "Venue name" %>
   </div>
 
   <div class="form-style">
-  <%= f.input :price, label: 'Price for one night stay', placeholder: "£200" %>
+  <%= f.input :price, label: 'Price per day (£)', placeholder: "Price" %>
   </div>
 
   <div class="form-style">
