@@ -62,7 +62,7 @@
             <h5 class="pl-3"></h5><p class="card-text text-justify pl-3 pr-3 pt-4 pb-3"><%= @venue.description %></p>
           </div>
 
-          <h5 class="pb-2 pt-3 text-center">Amenties</h5>
+          <h5 class="pb-2 pt-3 text-center">Amenities</h5>
             <div class="row justify-content-around pt-3 pb-5 pl-5 pr-5 mr-3 ml-3">
               <i id="amen-icon" class="fas fa-wheelchair"></i><i id="amen-icon" class="fas fa-glass-cheers"></i><i id="amen-icon" class="fas fa-utensils"></i><i id="amen-icon" class="fas fa-parking"></i><i id="amen-icon" class="fas fa-restroom"></i>
             </div>
@@ -90,8 +90,8 @@
         <% else %>
         <%= simple_form_for [@venue, @booking] do |f| %>
           <div class="form-inputs">
-            <%= f.input :check_in %>
-            <%= f.input :check_out %>
+            <%= f.input :check_in, as: :string %>
+            <%= f.input :check_out, as: :string %>
           </div>
           <div class="form-actions">
             <%= f.button :submit, "Book now", id: "show-card", class: "btn btn-primary btn-block" %>
