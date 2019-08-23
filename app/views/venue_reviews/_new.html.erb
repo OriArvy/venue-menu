@@ -1,6 +1,6 @@
 <div class="my-container">
     <div class="text-center">
-      <%= simple_form_for [@booking, @review] do |f| %>
+      <%= simple_form_for [booking, venue_review] do |f| %>
         <%= f.input :description, label: 'Tell us about your stay', as: :text %>
           <div id="stars-center">
             <%= f.input :rating, collection: (1..5).to_a %>
