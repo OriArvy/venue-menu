@@ -22,7 +22,7 @@
                     <h3>Bookings</h3>
                       <div id="booking-select" class="rounded pt-2 pb-2" style="height: 320px; overflow-y: scroll;">
                         <% current_user.bookings.each do |booking| %>
-                          <% if booking.venue_id == venue.id %>
+
                             <div>
                               <p>
                                 <strong>Check in: </strong><%= (booking.check_in).strftime("%m/%d/%Y") %>
@@ -38,7 +38,7 @@
 
                               </p>
                             </div>
-                          <% end %>
+
                         <% end %>
                       </div>
                   </div>
