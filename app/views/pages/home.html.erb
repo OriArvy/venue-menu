@@ -41,7 +41,7 @@
     <h1 class="ml-2"> Find unique venues for your event... </h1>
     <h1 class="ml-2"> </h1>
      <div class="navbar navbar-expand-sm navbar-light navbar-lewagon pl-0 ml-0 mt-2" id="search_form_home">
-      <li class="text-truncate w-100 mr-3 ml-2">
+      <li class="w-100 mr-3 ml-2">
           <%= form_tag venues_path, :class => "position-form", method: :get do %>
             <%= text_field_tag :query,
               params[:query],

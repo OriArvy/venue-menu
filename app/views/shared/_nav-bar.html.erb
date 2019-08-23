@@ -8,7 +8,7 @@
     <div id="logo-text" >VenueMenu</div>
     <% end %>
 
-      <li class="text-truncate w-100 mr-3 ml-2">
+      <li class="w-100 mr-3 ml-2">
           <%= form_tag venues_path, :class => "position-form" , method: :get do %>
             <%= text_field_tag :query,
               params[:query],
