@@ -1,6 +1,6 @@
 <div class="container">
   <div class="profile_items col-lg-4 offset-lg-4">
-    <h1>Venues you own</h1>
+    <h1>Your Venues</h1>
   </div>
     <% if current_user.venues.count == 0 %>
       <p class= "pl-5 ml-4">You haven't listed any venues yet</p>
@@ -9,11 +9,39 @@
         <div class="container">
           <div class="row justify-content-center">
             <% current_user.venues.each do |venue| %>
-              <div id="show-card" class="card col-lg-5 mr-2 ml-2 mb-5 mt-3">
-                <img class="card-img-top pt-3 rounded" src="<%= venue.photo %>" alt="Card image cap">
-                <div class="card-body">
-                <h3 class="card-title"><%= venue.name %></h3>
-                <a href="<%= venue_path(venue.id) %>" id ="btn-color-override"class="btn btn-primary btn-block">Venue Details</a>
+              <div id= "show-card"class="col-lg-12 card mb-3 mt-3">
+                <div class="row">
+                  <div id="show-card" class="card col-lg-5 mt-3 mb-3 ml-3">
+                    <img class="card-img-top pt-3 rounded" src="<%= venue.photo %>" alt="Card image cap">
+                    <div class="card-body">
+                    <h3 class="card-title text-center"><%= venue.name %></h3>
+                    <a href="<%= venue_path(venue.id) %>" id ="btn-color-override"class="btn btn-primary btn-block">Venue Details</a>
+                    </div>
+                  </div>
+                  <div class="flex-fill p-3 ml-2 pt-4">
+                    <h3>Bookings</h3>
+                      <div id="booking-select" class="rounded pt-2 pb-2" style="height: 320px; overflow-y: scroll;">
+                        <% current_user.bookings.each do |booking| %>
+                          <% if booking.venue_id == venue.id %>
+                            <div>
+                              <p>
+                                <strong>Check in: </strong><%= (booking.check_in).strftime("%m/%d/%Y") %>
+                                <strong>Check out: </strong><%= (booking.check_out).strftime("%m/%d/%Y") %>
+                                <strong>Duration: </strong><%= (booking.check_out - booking.check_in).to_i  %> days
+                                <br>
+                                <strong>Total Cost: </strong>£<%= booking.price %>
+                                <strong>Payment Status: </strong><% if booking.payment_completed? %>
+                                  Completed
+                                <% else %>
+                                  Awaiting Payment
+                                <% end %>
+
+                              </p>
+                            </div>
+                          <% end %>
+                        <% end %>
+                      </div>
+                  </div>
                 </div>
               </div>
             <% end %>
