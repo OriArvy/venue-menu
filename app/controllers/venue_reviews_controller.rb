@@ -18,7 +18,7 @@ class VenueReviewsController < ApplicationController
     @review.booking = @booking
     authorize @review
     if @review.save
-      redirect_to profile_path
+      redirect_to venue_path(@booking.venue)
     else
       render :new
     end
