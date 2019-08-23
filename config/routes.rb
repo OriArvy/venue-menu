@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get "profile", to: "pages#profile"
+  get "myvenues", to: "pages#myvenues"
+
   resources :venues do
     resources :bookings, only: [:new, :create]
   end
