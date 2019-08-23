@@ -4,16 +4,13 @@ class VenuesController < ApplicationController
     if params[:query].present?
       @venues = policy_scope(Venue)
       @venues = Venue.geocoded
-      @venues = Venue.near(params[:query], 50)
+      @venues = Venue.near(params[:query], 25)
       if @venues.blank?
-        @venues = Venue.all
+        @venues
       end
     else
       @venues = policy_scope(Venue)
     end
-
-
-
     @markers = @venues.map do |venue|
       {
         lat: venue.latitude,

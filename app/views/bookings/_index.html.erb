@@ -5,7 +5,7 @@
         <img class="card-img-top pt-3 rounded" src="<%= booking.venue.photo %>" alt="Card image cap">
         <div class="card-body">
           <h3 class="card-title"><%= booking.venue.name %></h3>
-          <div class="card-title"><strong>Arriving:</strong> <%= booking.check_in %></div>
+          <div class="card-title"><strong>Arriving:</strong> <%= (booking.check_in).strftime("%m/%d/%Y") %></div>
           <div class="card-title"><strong>Hired for:</strong>
             <% if (booking.check_out - booking.check_in).to_i == 0 %>
               1 day
@@ -14,7 +14,7 @@
           <% else %>
             <%= (booking.check_out - booking.check_in).to_i %> days
 
-          <p class="card-title"><strong>Total Cost:</strong> £<%= booking.venue.price * ((booking.check_out - booking.check_in).to_i)  %></p>
+          <p class="card-title"><strong>Total Cost:</strong> £<%= booking.venue.price * ((booking.check_out - booking.check_in).to_i) %></p>
           </div>
             <% end %>
           <div class="card-title"><strong>Payment Status:</strong> <% if booking.payment_completed? %>
@@ -28,7 +28,31 @@
 
 
           <a href="<%= venue_path(booking.venue_id) %>" id ="btn-color-override" class="btn btn-primary btn-block">Venue Details</a>
-           <%= link_to "Review this venue", new_booking_venue_review_path(booking), id: "btn-color-override", class: "btn btn-primary btn-block" %>
+
+           <!-- Button trigger modal -->
+            <button type="button" id="btn-color-override" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal">
+              Review this venue
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Review</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body add-review-modal">
+                    <%= render "venue_reviews/new", booking: booking, venue_review: VenueReview.new %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
         </div>
       </div>
@@ -36,20 +60,6 @@
   </div>
 </div>
 
-
-<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable" role="document">
-    <div id="show-card" class="modal-content">
-      <div class="modal-header">
-          <h1>Reviews</h1>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-
-      </div>
-    </div>
 
   </div>
 </div>
