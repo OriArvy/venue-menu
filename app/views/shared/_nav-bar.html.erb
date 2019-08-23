@@ -22,16 +22,20 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
+        <li class="nav-item active dropdown">
            <%  if user_signed_in? %>
-           <%= link_to "Add Venue",new_venue_path, class: "nav-link", id: "nav-link-white"  %>
+           <div>
+             <%  myname = current_user.name + "'s Profile" %>
+             <%= link_to myname, profile_path, class: "nav-link dropbtn", id: "nav-link-white"  %>
+           </div>
+            <div class="dropdown-content">
+              <%= link_to "My Bookings", profile_path %>
+              <%= link_to "My Venues", myvenues_path %>
+              <%= link_to "Add Venue", new_venue_path %>
+            </div>
            <% end %>
         </li>
-        <li class="nav-item active">
-           <%  if user_signed_in? %>
-           <%= link_to "My Profile",profile_path, class: "nav-link", id: "nav-link-white"  %>
-           <% end %>
-        </li>
+
         <li class="nav-item">
           <% if user_signed_in? == false %>
           <%= link_to "Sign up", new_user_registration_path, class: "nav-link", id: "nav-link-white" %>
