@@ -5,7 +5,7 @@
     "@rails/webpacker": "^4.0.7",
     "bootstrap": "^4.3.1",
     "flatpickr": "^4.6.2",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jquery-bar-rating": "^1.2.2",
     "mapbox-gl": "^1.2.1",
     "places.js": "^1.16.4",
