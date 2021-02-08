@@ -3,7 +3,7 @@ ruby '2.6.3'
 
 gem 'pg_search'
 gem 'pundit'
-gem 'carrierwave', '~> 1.2'
+gem 'carrierwave', '~> 1.3'
 gem 'cloudinary', '~> 1.9.1'
 gem 'devise'
 gem 'bootsnap', require: false
